@@ -13,9 +13,9 @@ let linkerSettings: [LinkerSetting] = [
 ]
 
 #if arch(x86_64)
-  let windowsAppRTBootstrapDll: Resource = .copy("nuget/bin/x86_64/Microsoft.WindowsAppRuntime.Bootstrap.dll")
+    let windowsAppRTBootstrapDll: Resource = .copy("nuget/bin/x86_64/Microsoft.WindowsAppRuntime.Bootstrap.dll")
 #elseif arch(arm64)
-  let windowsAppRTBootstrapDll: Resource = .copy("nuget/bin/arm64/Microsoft.WindowsAppRuntime.Bootstrap.dll")
+    let windowsAppRTBootstrapDll: Resource = .copy("nuget/bin/arm64/Microsoft.WindowsAppRuntime.Bootstrap.dll")
 #endif
 
 let package = Package(
@@ -25,9 +25,18 @@ let package = Package(
         .library(name: "CWinAppSDK", targets: ["CWinAppSDK"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/thebrowsercompany/swift-cwinrt", branch: "main"),
-        .package(url: "https://github.com/stackotter/swift-uwp", branch: "6e5c0089d599fc47c7f052521e1b546e54c7dc13"),
-        .package(url: "https://github.com/thebrowsercompany/swift-windowsfoundation", branch: "main"),
+        .package(
+            url: "https://github.com/thebrowsercompany/swift-cwinrt",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/stackotter/swift-uwp",
+            branch: "c9d3fc079aaaa5113cde9a0132278fb83e808599"
+        ),
+        .package(
+            url: "https://github.com/thebrowsercompany/swift-windowsfoundation",
+            branch: "main"
+        ),
     ],
     targets: [
         .target(
